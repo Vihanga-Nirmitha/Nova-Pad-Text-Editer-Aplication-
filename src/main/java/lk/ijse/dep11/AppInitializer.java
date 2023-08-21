@@ -38,11 +38,13 @@ public class AppInitializer extends Application {
         fade.playFromStart();
         primaryStage.show();
 
-        javafx.animation.PauseTransition pause = new javafx.animation.PauseTransition(Duration.seconds(5));
+        javafx.animation.PauseTransition pause = new javafx.animation.PauseTransition(Duration.seconds(3));
         pause.setOnFinished(event -> {
             primaryStage.close();
             Stage primaryStage2 = new Stage();
             primaryStage2.setScene(mainScene);
+            primaryStage2.setHeight(900);
+            primaryStage2.setWidth(700);
             primaryStage2.centerOnScreen();
             primaryStage2.show();
         });
