@@ -1,5 +1,6 @@
 package lk.ijse.dep11;
 
+import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,6 +9,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 public class AppInitializer extends Application {
 
@@ -25,12 +27,31 @@ public class AppInitializer extends Application {
         Scene splashcene = new Scene(splashroot);
 
         primaryStage.setScene(splashcene);
-        //primaryStage.setTitle("Hello Java FX");
+
         primaryStage.initStyle(StageStyle.TRANSPARENT);
-        root.setBackground(Background.fill(Color.TRANSPARENT));
-        mainScene.setFill(Color.TRANSPARENT);
+        splashroot.setBackground(Background.fill(Color.TRANSPARENT));
+        splashcene.setFill(Color.TRANSPARENT);
         primaryStage.centerOnScreen();
+        FadeTransition fade = new FadeTransition(Duration.millis(1000),splashroot);
+        fade.setFromValue(0);
+        fade.setToValue(1);
+        fade.playFromStart();
         primaryStage.show();
+
+        javafx.animation.PauseTransition pause = new javafx.animation.PauseTransition(Duration.seconds(5));
+        pause.setOnFinished(event -> {
+            primaryStage.close();
+            Stage primaryStage2 = new Stage();
+            primaryStage2.setScene(mainScene);
+            primaryStage2.centerOnScreen();
+            primaryStage2.show();
+        });
+        pause.play();
+
+
+
+
+
 
     }
 }
