@@ -43,6 +43,7 @@ public class AppInitializer extends Application {
             primaryStage.close();
             Stage primaryStage2 = new Stage();
             primaryStage2.setScene(mainScene);
+            primaryStage2.setTitle("Nova Pad");
             primaryStage2.setHeight(900);
             primaryStage2.setWidth(700);
             primaryStage2.centerOnScreen();
